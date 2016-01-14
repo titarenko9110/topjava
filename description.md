@@ -1,5 +1,3 @@
-#### <a href="https://github.com/JavaOPs/topjava">Вводное занятие</a>
-
 ####   Разработка полнофункционального Spring/JPA Enterprise приложения c авторизацией и правами доступа на основе ролей используя <a href="http://zeroturnaround.com/rebellabs/java-tools-and-technologies-landscape-for-2014/" target="_blank">наиболее популярные инструменты и технологии Java</a>: Maven, Spring MVC, Security, JPA(Hibernate), REST(Jackson), Bootstrap (css,js), datatables, jQuery + plugins, Java 8 Stream and Time API
 -  Основное внимание будет уделяться способам решения многочисленных проблем разработки в Spring/JPA, а также структурному (красивому и надежному) java кодированию и архитектуре приложения.
 -  Каждая итерация проекта в закрепляется домашним заданием по реализации схожей функциональности. Следующее занятие начинается с разбора домашних заданий.
@@ -15,7 +13,8 @@ Hibernate, делаем конверторы для типов LocalDateTime (Ja
 -   Используются самые востребованные на сегодняшний момент фреймворки: Maven, Spring Security 4
             вместе с Spring Security Test, наиболее удобный для работы с базой проект Spring Data Jpa, библиотека логирования logback, реализующая SLF4J, повсеместно используемый Bootstrap и jQuery.
 
-### <a href="http://topjava.herokuapp.com/" target=_blank>Демо разрабатываемого приложения</a>
+#### <a href="http://topjava.herokuapp.com/" target=_blank>Демо разрабатываемого приложения</a>
+#### <a href="https://github.com/JavaOPs/topjava">Вводное занятие</a>
 
 ## Архитектура проекта. Персистентность.
 -  Системы управления версиями
