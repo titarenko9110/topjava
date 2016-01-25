@@ -12,6 +12,7 @@
 -  <a href="http://gkislin.ru/ru/cv.html">Мое (только как пример)</a>, <a href="https://www.linkedin.com/in/gkislin">linkedIn</a>
 -  <a href="http://www.quizful.net/test">Quizful- тесты онлайн</a>
 -  <a href="https://github.com/MaximAbramchuck/awesome-interviews#java">Сборка по вопросам на интервью</a>
+-  <a href="https://vk.com/video-58538268_171596485?list=3d42c70aa5070a84a0">Яков Файн: как стать профессиональным Java разработчиком</a>
 
 ### От себя:
 -  email, skype - очень желательно, чтобы по ним вы были узнаваемы. Заведите рабочие, если не так.
