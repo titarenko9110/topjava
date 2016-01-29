@@ -3,6 +3,7 @@
 ![cv](https://cloud.githubusercontent.com/assets/13649199/10877471/93ea86b8-8157-11e5-9bfa-95e3fba75c58.jpg)
 
 ### Общие вещи:
+-  <a href="http://habrahabr.ru/company/ua-hosting/blog/272617/">Научиться программировать сложнее, чем кажется</a>
 -  <a href="http://enjoy-job.ru/trudoustroistvo/kak-pravilno-sostavit-rezume/">Яков Файн: Как правильно составить резюме</a>
 -  <a href="https://www.youtube.com/watch?v=ft0Nj8Cm9kk">Как стать профессиональным Java разработчиком</a>
 -  <a href="http://habrahabr.ru/post/184332/">Резюме программистов. Часть 1 (плохие)</a>
