@@ -4,8 +4,8 @@
 
 ### Общие вещи:
 -  <a href="http://habrahabr.ru/company/ua-hosting/blog/272617/">Научиться программировать сложнее, чем кажется</a>
--  <a href="http://enjoy-job.ru/trudoustroistvo/kak-pravilno-sostavit-rezume/">Яков Файн: Как правильно составить резюме</a>
--  <a href="https://www.youtube.com/watch?v=ft0Nj8Cm9kk">Как стать профессиональным Java разработчиком</a>
+-  <a href="https://www.youtube.com/watch?v=ft0Nj8Cm9kk">Яков Файн: Как стать профессиональным Java разработчиком</a>
+-  <a href="http://enjoy-job.ru/trudoustroistvo/kak-pravilno-sostavit-rezume/">Как правильно составить резюме</a>
 -  <a href="http://habrahabr.ru/post/184332/">Резюме программистов. Часть 1 (плохие)</a>
 -  <a href="http://habrahabr.ru/post/184372/">Резюме программистов. Часть 2 (хорошие)</a>
 -  <a href="http://dou.ua/forums/topic/8806/">Покритикуйте пожалуйста резюме (Junior java)</a>
