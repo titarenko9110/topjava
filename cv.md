@@ -1,16 +1,16 @@
-## Поиск работы
+## Составление резюме, подготовка к интервью, поиск работы
 
 ![cv](https://cloud.githubusercontent.com/assets/13649199/10877471/93ea86b8-8157-11e5-9bfa-95e3fba75c58.jpg)
 
-### Общие вещи:
+### Составление резюме:
+-  <a href="http://lifehacker.ru/2015/04/07/33-lajfhaka-dlya-rezyume/">Как продать свое резюме в 2 раза дороже</a>
 -  <a href="http://habrahabr.ru/company/ua-hosting/blog/272617/">Научиться программировать сложнее, чем кажется</a>
--  <a href="https://www.youtube.com/watch?v=ft0Nj8Cm9kk">Яков Файн: Как стать профессиональным Java разработчиком</a>
 -  <a href="http://enjoy-job.ru/trudoustroistvo/kak-pravilno-sostavit-rezume/">Как правильно составить резюме</a>
 -  <a href="http://habrahabr.ru/post/184332/">Резюме программистов. Часть 1 (плохие)</a>
 -  <a href="http://habrahabr.ru/post/184372/">Резюме программистов. Часть 2 (хорошие)</a>
--  <a href="http://dou.ua/forums/topic/8806/">Покритикуйте пожалуйста резюме (Junior java)</a>
--  <a href="http://www.luxoft-personnel.ru/press/articles/resume/">Как составить резюме программисту?</a>
--  <a href="http://gkislin.ru/ru/cv.html">Мое (только как пример)</a>, <a href="https://www.linkedin.com/in/gkislin">linkedIn</a>
+
+### Подготовка к интервью:
+-  <a href="https://www.youtube.com/watch?v=ft0Nj8Cm9kk">Яков Файн: Как стать профессиональным Java разработчиком</a>
 -  <a href="http://www.quizful.net/test">Quizful- тесты онлайн</a>
 -  <a href="https://github.com/MaximAbramchuck/awesome-interviews#java">Сборка по вопросам на интервью</a>
 
