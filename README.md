@@ -10,13 +10,12 @@ Maven/ Spring/ Security/ JPA(Hibernate)/ REST(Jackson)/ Bootstrap(CSS)/ jQuery +
 
     Старинная китайская поговорка
 
-Вводное занятие
-===============
-
 ## <a href="description.md">Описание проекта</a>
 ### <a href="http://topjava.herokuapp.com/" target=_blank>Демо разрабатываемого приложения</a>
 ### <a href="https://github.com/JavaOPs/topjava/wiki">Требования к участникам, Wiki</a>
 
+Вводное занятие
+===============
 ## ![video](http://s.ytimg.com/yts/img/favicon-vflz7uhzw.ico) <a href="https://drive.google.com/file/d/0B9Ye2auQ_NsFSUNrdVc0bDZuX2s">Системы управления версиями. Git.
 
 -  <a href="http://ru.wikipedia.org/wiki/Система_управления_версиями">Система управления версиями</a>. <a
