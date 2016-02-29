@@ -31,4 +31,8 @@ public class UserMealWithExceed {
     public String getDescription() {
         return description;
     }
+
+    public int getCalories() {
+        return calories;
+    }
 }
