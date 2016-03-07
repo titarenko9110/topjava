@@ -53,6 +53,7 @@ public class UserMealsUtil {
         final List<UserMealWithExceed> mealExceeded = new ArrayList<>();
         mealList.forEach(meal -> {
             final LocalDateTime dateTime = meal.getDateTime();
+
             if (TimeUtil.isBetween(dateTime.toLocalTime(), startTime, endTime)) {
                 mealExceeded.add(createWithExceed(meal, caloriesSumPerDate.get(dateTime.toLocalDate()) > caloriesPerDay));
             }
