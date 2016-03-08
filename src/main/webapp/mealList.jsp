@@ -26,13 +26,19 @@
 
 %>
 
+
 </table>
-<%--<c:forEach items="${mealList}" var="item">--%>
-    <%--&lt;%&ndash;${item}<br>&ndash;%&gt;--%>
-    <%--<tr>--%>
-        <%--<td>datetame: <c:out value="${item.dateTime}"/></td>--%>
-        <%--<td>description: <c:out value="${item.description}"/></td>--%>
-    <%--</tr>--%>
-<%--</c:forEach>--%>
+<table border="1">
+    <tr><th>DATE</th><th>DESCRIPTION</th><th>CALORIES</th></tr>
+<c:forEach items="${mealList}" var="item">
+
+    <tr style="color: <c:choose>
+<c:when test="${item.exceed}">red</c:when><c:otherwise>green</c:otherwise></c:choose>
+">
+        <td><c:out value="${item.dateTime}"/></td>
+        <td><c:out value="${item.description}"/></td>
+    </tr>
+</c:forEach>
+    </table>
 </body>
 </html>
