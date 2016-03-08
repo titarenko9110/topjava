@@ -25,6 +25,7 @@
     }
 
 %>
+
 </table>
 <%--<c:forEach items="${mealList}" var="item">--%>
     <%--&lt;%&ndash;${item}<br>&ndash;%&gt;--%>
