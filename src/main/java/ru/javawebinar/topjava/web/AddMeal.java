@@ -15,7 +15,7 @@ import java.util.List;
  * Created by MyMac on 08.03.16.
  */
 public class AddMeal extends HttpServlet{
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("createMeal.jsp");
     }
 }

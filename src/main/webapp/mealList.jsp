@@ -37,6 +37,7 @@
 ">
         <td><c:out value="${item.dateTime}"/></td>
         <td><c:out value="${item.description}"/></td>
+        <td><c:out value="${item.calories}"/></td>
     </tr>
 </c:forEach>
     </table>
