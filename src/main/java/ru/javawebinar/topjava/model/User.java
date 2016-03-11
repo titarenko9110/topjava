@@ -2,6 +2,7 @@ package ru.javawebinar.topjava.model;
 
 import ru.javawebinar.topjava.util.UserMealsUtil;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.EnumSet;
 import java.util.Set;
@@ -84,6 +85,10 @@ public class User extends NamedEntity {
         return password;
     }
 
+    public boolean isNew() {
+        return id == null;
+    }
+
     @Override
     public String toString() {
         return "User (" +
@@ -95,4 +100,8 @@ public class User extends NamedEntity {
                 ", caloriesPerDay=" + caloriesPerDay +
                 ')';
     }
+
+
+
+
 }
