@@ -8,6 +8,7 @@ import ru.javawebinar.topjava.repository.UserRepository;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * GKislin
@@ -36,7 +37,7 @@ public class MockUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Collection<User> getAll() {
+    public List<User> getAll() {
         LOG.info("getAll");
         return Collections.emptyList();
     }

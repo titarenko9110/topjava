@@ -59,4 +59,8 @@ public class UserMeal {
                 ", calories=" + calories +
                 '}';
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

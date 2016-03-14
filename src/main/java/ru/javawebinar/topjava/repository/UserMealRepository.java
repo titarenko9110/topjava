@@ -3,6 +3,7 @@ package ru.javawebinar.topjava.repository;
 import ru.javawebinar.topjava.model.UserMeal;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * GKislin
@@ -16,5 +17,5 @@ public interface UserMealRepository {
 
     UserMeal get(int userId, int mealId);
 
-    Collection<UserMeal> getAll(int userId);
+    List<UserMeal> getAll(int userId);
 }
