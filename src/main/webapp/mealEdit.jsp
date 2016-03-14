@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<!DOCTYPE html>
 <html>
 <head>
     <title>Meal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <style>
         dl {
             background: none repeat scroll 0 0 #FAFAFA;
@@ -24,7 +25,9 @@
     </style>
 </head>
 <body>
+
 <section>
+
     <h2><a href="">Home</a></h2>
     <h3>Edit meal</h3>
     <hr>

@@ -19,22 +19,22 @@ public class UserMealServiceImpl implements UserMealService {
     @Autowired
     private UserMealRepository repository;
 
-    @Override
+
     public UserMeal save(UserMeal userMeal, int userId) {
         return repository.save(userMeal,userId);
     }
 
-    @Override
+
     public void delete(int userId, int mealId)  throws NotFoundException {
         ExceptionUtil.check(repository.delete(userId,mealId), mealId);
     }
 
-    @Override
+
     public UserMeal get(int userId, int mealId) throws NotFoundException {
         return ExceptionUtil.check(repository.get(userId,mealId), mealId);
     }
 
-    @Override
+
     public List<UserMeal> getAll(int userId) {
         return repository.getAll(userId);
     }

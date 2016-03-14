@@ -2,10 +2,10 @@ package ru.javawebinar.topjava.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.javawebinar.topjava.model.UserMeal;
-import ru.javawebinar.topjava.repository.mock.InMemoryUserMealRepositoryImpl;
-import ru.javawebinar.topjava.repository.UserMealRepository;
-import ru.javawebinar.topjava.util.UserMealsUtil;
+
 import ru.javawebinar.topjava.web.meal.UserMealRestController;
 
 import javax.servlet.ServletConfig;
@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Objects;
 
 /**
@@ -29,17 +31,39 @@ public class MealServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        controller = new UserMealRestController();
+        ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml");
+        controller = appCtx.getBean(UserMealRestController.class);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        if(request.getParameter("filter")!=null){
+        LocalDate startDate =  request.getParameter("FromDate").isEmpty() ? LocalDate.MIN : LocalDate.parse(request.getParameter("FromDate"));
+        LocalDate endDate =  request.getParameter("ToDate").isEmpty() ? LocalDate.MAX : LocalDate.parse(request.getParameter("ToDate"));
+        LocalTime startTime =  request.getParameter("fromTime").isEmpty() ? LocalTime.MIN : LocalTime.parse(request.getParameter("fromTime"));
+        LocalTime endTime =  request.getParameter("toTime").isEmpty() ? LocalTime.MAX : LocalTime.parse(request.getParameter("toTime"));
+            request.setAttribute("mealList",
+                    controller.getFiltered(startDate,endDate,startTime,endTime));
+            request.getRequestDispatcher("/mealList.jsp").forward(request, response);
+
+
+        }
+
+
+
+
         String id = request.getParameter("id");
-        UserMeal userMeal = controller.save(id.isEmpty() ? null : Integer.valueOf(id),
+        UserMeal userMeal = new UserMeal(id.isEmpty() ? null : Integer.valueOf(id),
                 LocalDateTime.parse(request.getParameter("dateTime")),
                 request.getParameter("description"),
                 Integer.valueOf(request.getParameter("calories")));
-        LOG.info(userMeal.isNew() ? "Create {}" : "Update {}", userMeal);
+        if (userMeal.isNew()) {
+            userMeal = controller.save(userMeal);
+            LOG.info("Create {}", userMeal);
+        } else {
+            controller.save(userMeal);
+            LOG.info("Update {}", userMeal);
+        }
         response.sendRedirect("meals");
     }
 

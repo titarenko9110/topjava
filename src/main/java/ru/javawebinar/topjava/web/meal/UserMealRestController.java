@@ -9,10 +9,14 @@ import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.model.UserMeal;
 import ru.javawebinar.topjava.service.UserMealService;
 import ru.javawebinar.topjava.to.UserMealWithExceed;
+import ru.javawebinar.topjava.util.TimeUtil;
 import ru.javawebinar.topjava.util.UserMealsUtil;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * GKislin
@@ -25,6 +29,12 @@ public class UserMealRestController {
     @Autowired
     private UserMealService service;
 
+    public List<UserMealWithExceed> getFiltered(LocalDate fromDate, LocalDate toDate, LocalTime fromTime, LocalTime toTime) {
+        return getAll().stream()
+//                .filter(m -> TimeUtil.isBetween(m.getDateTime(), fromTime, toTime))
+                .collect(Collectors.toList());
+    }
+
     public List<UserMealWithExceed> getAll() {
         LOG.info("getAll");
         return UserMealsUtil.getWithExceeded(service.getAll(LoggedUser.id()), LoggedUser.getCaloriesPerDay());
@@ -35,8 +45,7 @@ public class UserMealRestController {
         return service.get(LoggedUser.id(), mealId);
     }
 
-    public UserMeal save(int mealId,LocalDateTime dateTime,String parametr,int calories) {
-        UserMeal userMeal = new UserMeal(mealId,dateTime,parametr,calories);
+    public UserMeal save(UserMeal userMeal) {
         LOG.info("create " + userMeal);
         return service.save(userMeal, LoggedUser.id());
     }
