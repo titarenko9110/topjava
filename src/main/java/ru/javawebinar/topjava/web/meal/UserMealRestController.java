@@ -31,7 +31,10 @@ public class UserMealRestController {
 
     public List<UserMealWithExceed> getFiltered(LocalDate fromDate, LocalDate toDate, LocalTime fromTime, LocalTime toTime) {
         return getAll().stream()
-//                .filter(m -> TimeUtil.isBetween(m.getDateTime(), fromTime, toTime))
+                .filter(m -> TimeUtil.isBetween(m.getDateTime().toLocalTime(), fromTime, toTime))
+
+                .filter(m -> TimeUtil.isBetweenDate(m.getDateTime().toLocalDate(), fromDate, toDate))
+
                 .collect(Collectors.toList());
     }
 

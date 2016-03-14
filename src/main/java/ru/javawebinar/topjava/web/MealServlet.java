@@ -38,8 +38,8 @@ public class MealServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         if(request.getParameter("filter")!=null){
-        LocalDate startDate =  request.getParameter("FromDate").isEmpty() ? LocalDate.MIN : LocalDate.parse(request.getParameter("FromDate"));
-        LocalDate endDate =  request.getParameter("ToDate").isEmpty() ? LocalDate.MAX : LocalDate.parse(request.getParameter("ToDate"));
+        LocalDate startDate =  request.getParameter("fromDate").isEmpty() ? LocalDate.MIN : LocalDate.parse(request.getParameter("fromDate"));
+            LocalDate endDate =  request.getParameter("toDate").isEmpty() ? LocalDate.MAX : LocalDate.parse(request.getParameter("toDate"));
         LocalTime startTime =  request.getParameter("fromTime").isEmpty() ? LocalTime.MIN : LocalTime.parse(request.getParameter("fromTime"));
         LocalTime endTime =  request.getParameter("toTime").isEmpty() ? LocalTime.MAX : LocalTime.parse(request.getParameter("toTime"));
             request.setAttribute("mealList",
