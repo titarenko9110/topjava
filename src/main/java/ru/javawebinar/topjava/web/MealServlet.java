@@ -47,24 +47,22 @@ public class MealServlet extends HttpServlet {
             request.getRequestDispatcher("/mealList.jsp").forward(request, response);
 
 
+        }else {
+            String id = request.getParameter("id");
+            UserMeal userMeal = new UserMeal(id.isEmpty() ? null : Integer.valueOf(id),
+                    LocalDateTime.parse(request.getParameter("dateTime")),
+                    request.getParameter("description"),
+                    Integer.valueOf(request.getParameter("calories")));
+            if (userMeal.isNew()) {
+                userMeal = controller.save(userMeal);
+                LOG.info("Create {}", userMeal);
+            } else {
+                controller.save(userMeal);
+                LOG.info("Update {}", userMeal);
+            }
+            response.sendRedirect("meals");
         }
 
-
-
-
-        String id = request.getParameter("id");
-        UserMeal userMeal = new UserMeal(id.isEmpty() ? null : Integer.valueOf(id),
-                LocalDateTime.parse(request.getParameter("dateTime")),
-                request.getParameter("description"),
-                Integer.valueOf(request.getParameter("calories")));
-        if (userMeal.isNew()) {
-            userMeal = controller.save(userMeal);
-            LOG.info("Create {}", userMeal);
-        } else {
-            controller.save(userMeal);
-            LOG.info("Update {}", userMeal);
-        }
-        response.sendRedirect("meals");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
