@@ -34,7 +34,7 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     @Override
     public UserMeal save(UserMeal userMeal, int userId) {
         Map<Integer, UserMeal> meals = repository.get(userId);
-        if (userMeal.isNew()) {
+        if (userMeal.isNew()) {  //здесь я проверяю или
             userMeal.setId(counter.incrementAndGet());
         }else {
             if(meals.get(userMeal.getId())==null){
@@ -42,7 +42,6 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
             }
         }
         if(meals!=null) {
-
             meals.put(userMeal.getId(),userMeal);
         }else {
             meals = new ConcurrentHashMap<>();
@@ -70,9 +69,7 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     @Override
     public List<UserMeal> getAll(int userId) {
         Map<Integer,UserMeal> meals = repository.get(userId);
-        if(meals==null)return null;
         List<UserMeal> result = new ArrayList<>(meals.values());
-
         Collections.sort(result,DATE_TIME_COMPARATOR);
         return result;
     }
@@ -80,9 +77,7 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     @Override
     public List<UserMeal> getFiltered(LocalDate fromDate, LocalDate toDate, LocalTime fromTime, LocalTime toTime,int userId) {
         Map<Integer,UserMeal> meals = repository.get(userId);
-        if(meals==null)return null;
-        List<UserMeal> result = new ArrayList<>(meals.values());
-        return result.stream()
+        return meals.values().stream()
                 .filter(m -> TimeUtil.isBetween(m.getDateTime().toLocalTime(), fromTime, toTime))
                 .filter(m -> TimeUtil.isBetweenDate(m.getDateTime().toLocalDate(), fromDate, toDate))
                 .collect(Collectors.toList());
