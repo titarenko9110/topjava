@@ -34,6 +34,7 @@ public class UserMealsUtil {
     }
 
     public static List<UserMealWithExceed> getWithExceeded(Collection<UserMeal> mealList, int caloriesPerDay) {
+        if(mealList==null)return null;
         return getFilteredWithExceeded(mealList, LocalTime.MIN, LocalTime.MAX, caloriesPerDay);
     }
 

@@ -2,6 +2,8 @@ package ru.javawebinar.topjava.service;
 
 import ru.javawebinar.topjava.model.UserMeal;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 /**
@@ -17,4 +19,6 @@ public interface UserMealService {
     UserMeal get(int userId, int mealId);
 
     List<UserMeal> getAll(int userId);
+
+    List<UserMeal> getFiltered(LocalDate fromDate, LocalDate toDate, LocalTime fromTime, LocalTime toTime,int userId);
 }

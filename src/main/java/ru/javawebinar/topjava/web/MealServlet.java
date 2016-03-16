@@ -37,19 +37,15 @@ public class MealServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        if(request.getParameter("filter")!=null){
-        LocalDate startDate =  request.getParameter("fromDate").isEmpty() ? LocalDate.MIN : LocalDate.parse(request.getParameter("fromDate"));
-            LocalDate endDate =  request.getParameter("toDate").isEmpty() ? LocalDate.MAX : LocalDate.parse(request.getParameter("toDate"));
-        LocalTime startTime =  request.getParameter("fromTime").isEmpty() ? LocalTime.MIN : LocalTime.parse(request.getParameter("fromTime"));
-        LocalTime endTime =  request.getParameter("toTime").isEmpty() ? LocalTime.MAX : LocalTime.parse(request.getParameter("toTime"));
+        if (request.getParameter("filter") != null) {
+            LocalDate startDate = request.getParameter("fromDate").isEmpty() ? LocalDate.MIN : LocalDate.parse(request.getParameter("fromDate"));
+            LocalDate endDate = request.getParameter("toDate").isEmpty() ? LocalDate.MAX : LocalDate.parse(request.getParameter("toDate"));
+            LocalTime startTime = request.getParameter("fromTime").isEmpty() ? LocalTime.MIN : LocalTime.parse(request.getParameter("fromTime"));
+            LocalTime endTime = request.getParameter("toTime").isEmpty() ? LocalTime.MAX : LocalTime.parse(request.getParameter("toTime"));
             request.setAttribute("mealList",
-                    controller.getFiltered(startDate,endDate,startTime,endTime));
+                    controller.getFiltered(startDate, endDate, startTime, endTime));
             request.getRequestDispatcher("/mealList.jsp").forward(request, response);
-
-
         }
-
-
 
 
         String id = request.getParameter("id");
@@ -65,6 +61,7 @@ public class MealServlet extends HttpServlet {
             LOG.info("Update {}", userMeal);
         }
         response.sendRedirect("meals");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

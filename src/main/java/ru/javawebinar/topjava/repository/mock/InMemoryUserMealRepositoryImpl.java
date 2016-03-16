@@ -4,13 +4,18 @@ import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.model.UserMeal;
 import ru.javawebinar.topjava.repository.UserMealRepository;
+import ru.javawebinar.topjava.to.UserMealWithExceed;
+import ru.javawebinar.topjava.util.TimeUtil;
 import ru.javawebinar.topjava.util.UserMealsUtil;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  * GKislin
@@ -20,7 +25,6 @@ import java.util.function.Consumer;
 public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     private Map<Integer, Map<Integer, UserMeal>> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
-    private static Map<Integer, UserMeal> meal = new ConcurrentHashMap<>();
     public static Comparator<UserMeal> DATE_TIME_COMPARATOR = (o1, o2) -> o2.getDateTime().compareTo(o1.getDateTime());
 
     {
@@ -29,16 +33,23 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
 
     @Override
     public UserMeal save(UserMeal userMeal, int userId) {
+        Map<Integer, UserMeal> meals = repository.get(userId);
         if (userMeal.isNew()) {
             userMeal.setId(counter.incrementAndGet());
-        } else if (get(userId, userMeal.getId()) == null) {
-            return null;
+        }else {
+            if(meals.get(userMeal.getId())==null){
+                return null;
+            }
         }
+        if(meals!=null) {
 
-        meal.put(userMeal.getId(), userMeal);
-        repository.put(userId,meal);
+            meals.put(userMeal.getId(),userMeal);
+        }else {
+            meals = new ConcurrentHashMap<>();
+            meals.put(userMeal.getId(),userMeal);
+            repository.put(userId,meals);
+        }
         return userMeal;
-
     }
 
     @Override
@@ -59,9 +70,22 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     @Override
     public List<UserMeal> getAll(int userId) {
         Map<Integer,UserMeal> meals = repository.get(userId);
+        if(meals==null)return null;
         List<UserMeal> result = new ArrayList<>(meals.values());
+
         Collections.sort(result,DATE_TIME_COMPARATOR);
         return result;
+    }
+
+    @Override
+    public List<UserMeal> getFiltered(LocalDate fromDate, LocalDate toDate, LocalTime fromTime, LocalTime toTime,int userId) {
+        Map<Integer,UserMeal> meals = repository.get(userId);
+        if(meals==null)return null;
+        List<UserMeal> result = new ArrayList<>(meals.values());
+        return result.stream()
+                .filter(m -> TimeUtil.isBetween(m.getDateTime().toLocalTime(), fromTime, toTime))
+                .filter(m -> TimeUtil.isBetweenDate(m.getDateTime().toLocalDate(), fromDate, toDate))
+                .collect(Collectors.toList());
     }
 }
 

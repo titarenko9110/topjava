@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.repository.mock;
 
+import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.UserRepository;
@@ -12,6 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by andrey9110 on 11.03.2016.
  */
+
 public class InMemoryUserRepositoryImpl implements UserRepository{
     private Map<Integer, User> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
@@ -21,7 +23,7 @@ public class InMemoryUserRepositoryImpl implements UserRepository{
         save(new User(2,"admin","admin@admin.com","password", Role.ROLE_ADMIN));
     }
 
-    public static Comparator<User> NAME = (o1, o2) -> o1.getName().compareTo(o2.getName());
+    public static Comparator<User> COMPARE_NAME = (o1, o2) -> o1.getName().compareTo(o2.getName());
 
     @Override
     public User save(User user) {
@@ -49,8 +51,8 @@ public class InMemoryUserRepositoryImpl implements UserRepository{
 
     @Override
     public List<User> getAll() {
-        List<User> result = (ArrayList) repository.values();
-        Collections.sort(result,NAME);
+        List<User> result = new ArrayList<>(repository.values());
+        Collections.sort(result,COMPARE_NAME);
         return result;
     }
 }
