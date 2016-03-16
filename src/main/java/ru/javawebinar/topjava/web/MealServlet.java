@@ -31,8 +31,9 @@ public class MealServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml");
-        controller = appCtx.getBean(UserMealRestController.class);
+        try(ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml")) {
+            controller = appCtx.getBean(UserMealRestController.class);
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
@@ -45,26 +46,22 @@ public class MealServlet extends HttpServlet {
             request.setAttribute("mealList",
                     controller.getFiltered(startDate,endDate,startTime,endTime));
             request.getRequestDispatcher("/mealList.jsp").forward(request, response);
-
-
         }
-
-
-
-
-        String id = request.getParameter("id");
-        UserMeal userMeal = new UserMeal(id.isEmpty() ? null : Integer.valueOf(id),
-                LocalDateTime.parse(request.getParameter("dateTime")),
-                request.getParameter("description"),
-                Integer.valueOf(request.getParameter("calories")));
-        if (userMeal.isNew()) {
-            userMeal = controller.save(userMeal);
-            LOG.info("Create {}", userMeal);
-        } else {
-            controller.save(userMeal);
-            LOG.info("Update {}", userMeal);
+        else{
+            String id = request.getParameter("id");
+            UserMeal userMeal = new UserMeal(id.isEmpty() ? null : Integer.valueOf(id),
+                    LocalDateTime.parse(request.getParameter("dateTime")),
+                    request.getParameter("description"),
+                    Integer.valueOf(request.getParameter("calories")));
+            if (userMeal.isNew()) {
+                userMeal = controller.save(userMeal);
+                LOG.info("Create {}", userMeal);
+            } else {
+                controller.save(userMeal);
+                LOG.info("Update {}", userMeal);
+            }
+            response.sendRedirect("meals");
         }
-        response.sendRedirect("meals");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
